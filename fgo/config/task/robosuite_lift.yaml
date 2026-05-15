@@ -1,0 +1,54 @@
+name: robosuite_lift
+
+shape_meta: &shape_meta
+  obs:
+    frontview_pc:
+      shape: [512, 3]
+      type: point_cloud
+    robot0_eye_in_hand_pc:
+      shape: [512, 3]
+      type: point_cloud
+    robot0_eef_pos:
+      shape: [3]
+      type: low_dim
+    robot0_eef_quat:
+      shape: [4]
+      type: low_dim
+    robot0_gripper_qpos:
+      shape: [2]
+      type: low_dim
+  action:
+    shape: [10]
+
+abs_action: &abs_action true
+
+env_runner:
+  _target_: fgo.env_runner.robosuite_runner.RobosuiteRunner
+  shape_meta: ${shape_meta}
+  eval_episodes: 50
+  max_steps: 200
+  n_obs_steps: ${n_obs_steps}
+  n_action_steps: ${n_action_steps}
+  abs_action: *abs_action
+  task_name: Lift
+  render_size: 256
+  bounding_boxes:
+    frontview:
+      lower_bound: [-0.5, -0.4, 1.0]
+      upper_bound: [0.5, 2.0, 2.35]
+    robot0_eye_in_hand:
+      lower_bound: [-0.5, -0.5, 0.0]
+      upper_bound: [0.5, 0.5, 0.5]
+
+dataset:
+  _target_: fgo.dataset.robosuite_dataset.RobosuiteDataset
+  zarr_path: data/robosuite_lift.zarr
+  shape_meta: ${shape_meta}
+  n_obs_steps: ${n_obs_steps}
+  horizon: ${horizon}
+  abs_action: *abs_action
+  pad_before: ${eval:'${n_obs_steps}-1'}
+  pad_after: ${eval:'${n_action_steps}-1'}
+  seed: 42
+  val_ratio: 0.02
+  max_train_episodes: 90
