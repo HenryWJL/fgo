@@ -130,6 +130,3 @@ data/
 outputs/
 checkpoints/
 *.mp4
-*.gif
-*.png
-*.svg
