@@ -89,7 +89,7 @@ class FreqPolicy(BasePolicy):
         global_cond = obs_features.reshape(B, To, self.obs_feature_dim)
 
         # compute loss
-        with torch.cuda.amp.autocast(enabled=False):
+        with torch.amp.autocast(device_type="cuda", enabled=False):
             loss = self.model(trajectory, global_cond)
         loss_dict = {
             'bc_loss': loss.item(),
