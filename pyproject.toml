@@ -43,6 +43,7 @@ dependencies = [
     "zarr==2.17.0",
     
     # Third-party local dependencies
+    "mujoco-py @ file:third_party/mujoco-py-2.1.2.14",
     "dexart @ file:third_party/dexart-release",
     "gym @ file:third_party/gym-0.21.0",
     "mj_envs @ file:third_party/rrl-dependencies/mj_envs",

@@ -47,6 +47,7 @@ setup(
         "zarr==2.17.0",
         
         # Third-party local dependencies
+        f"mujoco-py @ file://localhost/{os.path.join(ROOT_PATH, 'third_party/mujoco-py-2.1.2.14')}"
         f"dexart @ file://localhost/{os.path.join(ROOT_PATH, 'third_party/dexart-release')}",
         f"gym @ file://localhost/{os.path.join(ROOT_PATH, 'third_party/gym-0.21.0')}",
         f"mj_envs @ file://localhost/{os.path.join(ROOT_PATH, 'third_party/rrl-dependencies/mj_envs')}",
