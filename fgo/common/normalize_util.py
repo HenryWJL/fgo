@@ -217,7 +217,12 @@ def realworld_abs_action_normalizer_from_stat(stat: Dict[str, np.ndarray]) -> Si
         }
         return {'scale': scale, 'offset': offset}, info
 
-    def get_gripper_param_info(stat: Dict[str, np.ndarray]) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    def get_gripper_param_info(
+        stat: Dict[str, np.ndarray],
+        output_max: Optional[float]=1.0,
+        output_min: Optional[float]=-1.0,
+        range_eps: Optional[float]=1e-7
+    ) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
         # -1, 1 normalization
         input_max = stat['max']
         input_min = stat['min']
