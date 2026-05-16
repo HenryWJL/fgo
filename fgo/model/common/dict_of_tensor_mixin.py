@@ -15,7 +15,7 @@ class DictOfTensorMixin(nn.Module):
     def device(self):
         return next(iter(self.parameters())).device
 
-    def _load_from_state_dict(self, state_dict: dict, prefix: str) -> None:
+    def _load_from_state_dict(self, state_dict: dict, prefix: str, **kwargs) -> None:
 
         def dfs_add(dest, keys: list, value: torch.Tensor) -> None:
             if len(keys) == 1:
