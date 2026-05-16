@@ -23,8 +23,6 @@ scipy==1.10.0
 setuptools==59.5.0
 tqdm==4.67.3
 termcolor==2.4.0
-torch==2.4.0
-torchvision==0.19.0
 torch-dct==0.1.6
 wandb==0.24.2
 zarr==2.16.0
@@ -37,6 +35,7 @@ zarr==2.16.0
 -e ./third_party/rrl-dependencies/mjrl
 -e ./third_party/robosuite
 -e ./third_party/mimicgen
+-e ./third_party/pytorch3d_simplified
 
 # This package
 -e .
