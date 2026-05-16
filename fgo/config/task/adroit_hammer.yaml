@@ -20,7 +20,7 @@ env_runner:
   n_obs_steps: ${n_obs_steps}
   n_action_steps: ${n_action_steps}
   task_name: hammer
-  use_point_crop: ${policy.use_point_crop}
+  use_point_crop: true
 
 dataset:
   _target_: fgo.dataset.adroit_dataset.AdroitDataset
