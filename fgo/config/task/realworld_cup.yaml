@@ -1,0 +1,33 @@
+name: realworld_cup
+
+shape_meta: &shape_meta
+  obs:
+    point_cloud:
+      shape: [1024, 3]
+      type: point_cloud
+    ee_pos:
+      shape: [3]
+      type: low_dim
+    ee_quat:
+      shape: [4]
+      type: low_dim
+    gripper_qpos:
+      shape: [1]
+      type: low_dim
+  action:
+    shape: [10]
+
+env_runner:  #TODO
+  _target_: fgo.env_runner.base_runner.BaseRunner
+
+dataset:
+  _target_: fgo.dataset.realworld_dataset.RealWorldDataset
+  zarr_path: data/realworld_cup.zarr
+  shape_meta: ${shape_meta}
+  n_obs_steps: ${n_obs_steps}
+  horizon: ${horizon}
+  pad_before: ${eval:'${n_obs_steps}-1'}
+  pad_after: ${eval:'${n_action_steps}-1'}
+  seed: 42
+  val_ratio: 0.0
+  max_train_episodes: null
