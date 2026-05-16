@@ -119,13 +119,13 @@ class FGODP3(BasePolicy):
             batched_global_cond = global_cond.repeat(2, 1)
         
         # cut-off frequency and guidance weight schedule
+        self.noise_scheduler.set_timesteps(self.num_inference_steps, self.device)
         timesteps = self.noise_scheduler.timesteps
         t_max = timesteps.max()
         freq_schedule = torch.round(self.f_base + (self.horizon - self.f_base) * (1 - timesteps / t_max))
         weight_schedule = 1 - timesteps / t_max
         
         trajectory = torch.randn((B, T, Da), device=self.device, dtype=self.dtype)
-        self.noise_scheduler.set_timesteps(self.num_inference_steps, self.device)
         f_base = torch.tensor([self.f_base], dtype=torch.long, device=self.device).expand(B)
         for t, freq, weight in zip(timesteps, freq_schedule, weight_schedule):
             batched_freq = torch.cat([f_base, freq[None].expand(B)], dim=0)
