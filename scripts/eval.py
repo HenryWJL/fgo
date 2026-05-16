@@ -148,7 +148,7 @@ class EvalWorkspace:
 @click.option("-d", "--device", type=str, default="cuda", help="Device type.")
 def main(task, policy, checkpoint, device):
     with hydra.initialize_config_dir(
-        config_dir=str(Path(__file__).parent.parent.joinpath('fgo', 'config')),
+        config_dir=str(Path(__file__).resolve().parent.parent.joinpath('fgo', 'config')),
         version_base=None
     ):
         cfg = hydra.compose(config_name=str(policy), overrides=[f'task={task}'])

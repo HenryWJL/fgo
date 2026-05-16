@@ -438,7 +438,7 @@ class TrainWorkspace:
 
 
 @hydra.main(
-    config_path=str(Path(__file__).parent.parent.joinpath('fgo', 'config')),
+    config_path=str(Path(__file__).resolve().parent.parent.joinpath('fgo', 'config')),
     version_base=None
 )
 def main(cfg):
