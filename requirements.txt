@@ -1,0 +1,42 @@
+# Standard dependencies
+Cython==0.29.35
+dill==0.3.5.1
+diffusers==0.35.2
+dm_control==1.0.23
+einops==0.8.0
+fpsample==1.0.2
+gpustat==1.1.1
+gymnasium==1.0.0
+hydra-core==1.2.0
+imageio==2.35.0
+ipdb==0.13.13
+moviepy==1.0.3
+matplotlib==3.7.5
+numba==0.58.1
+numpy==1.23.5
+numcodecs==0.11.0
+open3d==0.19.0
+omegaconf==2.3.0
+patchelf==0.17.2.0
+Pillow==10.4.0
+scipy==1.10.0
+setuptools==59.5.0
+tqdm==4.67.3
+termcolor==2.4.0
+torch==2.4.0
+torchvision==0.19.0
+torch-dct==0.1.6
+wandb==0.24.2
+zarr==2.16.0
+
+# Third-party local dependencies
+-e ./third_party/mujoco-py-2.1.2.14
+-e ./third_party/dexart-release
+-e ./third_party/gym-0.21.0
+-e ./third_party/rrl-dependencies/mj_envs
+-e ./third_party/rrl-dependencies/mjrl
+-e ./third_party/robosuite
+-e ./third_party/mimicgen
+
+# This package
+-e .
