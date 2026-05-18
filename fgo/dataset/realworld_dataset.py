@@ -88,6 +88,8 @@ class RealWorldDataset(BaseDataset):
                 normalizer[key] = get_identity_normalizer_from_stat(stat)
             elif key.endswith('qpos'):
                 normalizer[key] = get_range_normalizer_from_stat(stat)
+            elif key.endswith('qvel'):
+                normalizer[key] = get_range_normalizer_from_stat(stat)
             elif key.endswith('point_cloud'):
                 normalizer[key] = get_range_normalizer_from_stat(stat)
         return normalizer
