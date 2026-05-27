@@ -47,11 +47,11 @@ pip install -r requirements.txt
 ## 💻 Reproducing Simulation Benchmark Results
 #### 1. Collect Expert Demonstrations
 We use expert policies to collect demonstrations from simulated environments. You may find the following repositories useful for generating your own datasets:
-- **[Sim Demo Collector](https://github.com/HenryWJL/sim_demo_collector)**: Our custom package for collecting data in the [Robosuite](https://github.com/ARISE-Initiative/robosuite) and [MimicGen](https://github.com/NVlabs/mimicgen) environments.
-- **[3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy)**: Provides tutorials for collecting data in the [Adroit](https://github.com/aravindr93/hand_dapg) and [DexArt](https://github.com/Kami-code/dexart-release) environments.
+* **[Sim Demo Collector](https://github.com/HenryWJL/sim_demo_collector)**: Our custom package for collecting data in the [Robosuite](https://github.com/ARISE-Initiative/robosuite) and [MimicGen](https://github.com/NVlabs/mimicgen) environments.
+* **[3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy)**: Provides tutorials for collecting data in the [Adroit](https://github.com/aravindr93/hand_dapg) and [DexArt](https://github.com/Kami-code/dexart-release) environments.
 
 #### 2. Train Policies
-The training code is located in `scripts/train.py`. For example, to train the FGO policy on the Robosuite Lift task, run:
+The training code is located in `scripts/train.py`. For example, to train the FGO policy on the Robosuite Lift task:
 ```bash
 python scripts/train.py --config-name=fgo_dp3.yaml \
     task=robosuite_lift \
@@ -61,10 +61,23 @@ python scripts/train.py --config-name=fgo_dp3.yaml \
     training.num_epochs=3000 \
     dataloader.batch_size=512
 ```
-**Note:** This automatically creates a subdirectory under `data/outputs/` where configuration files, logs, and checkpoints are saved. To track your training runs with Weights & Biases, simply append training.use_wandb=true to the command.
+**Note:** This automatically creates a subdirectory under `data/outputs/` where configuration files, logs, and checkpoints are saved. To track your training runs with Weights & Biases, simply append `training.use_wandb=true` to the command.
 
 #### 3. Evaluate Pretrained Policies
-Once you have a fully trained policy, you can evaluate its performance in the simulated environments using the evaluation script `scripts/eval.py`:
+Once you have a fully trained policy, you can evaluate its performance in the simulated environments:
 ```bash
 python scripts/eval.py -t robosuite_lift -p fgo_dp3 -c <PATH_TO_CHECKPOINT>
 ```
+
+## 🦾 Real Robot
+### Hardware Requirements
+* **[UFACTORY xArm 7 Manipulator](https://www.ufactory.us/xarm)** (If you are using an xArm 5 or xArm 6, you must modify the task configuration files located in `fgo/config/task/`)
+* **[UFACTORY xArm Gripper](https://www.ufactory.us/product/ufactory-xarm-gripper)**
+* **[ZED 2 Stereo Camera](https://www.stereolabs.com/en-za/products/zed-2)** (Requires a USB-C cable and a stable camera stand)
+* **[Meta Quest 3](https://www.meta.com/quest/quest-3)** (Used for teleoperation and human demonstration collection.)
+
+### Software Requirements
+* **Operating System:** Ubuntu 20.04 or 22.04
+* **Python Environment:** Conda is highly recommended
+* **xArm SDK:** The official Python wrapper (`pip install xarm-python-sdk`) 
+* **[ZED SDK](https://www.stereolabs.com/developers/release):** You must install the system-level C++ SDK first, and then compile the `pyzed` Python wrapper using the provided `get_python_api.py` script
