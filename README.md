@@ -8,9 +8,9 @@
 |
 <a href="https://drive.google.com/drive/folders/17WUGhxG69ddA7HNqqN5lF0zIXbS6Eg3-?usp=drive_link"><strong>Data</strong></a>
 
-<a href="https://henrywjl.github.io/">Junlin Wang</a>
+**[Junlin Wang](https://henrywjl.github.io/)** **(Solo Author!)**
 
-<p align="center"><img src="media/teaser.gif" alt="drawing" width="80%"/></p>
+<p align="center"><img src="media/teaser.gif" alt="drawing" width="100%"/></p>
 
 ## 🔧 Installation
 #### 1. Create a Conda Environment
