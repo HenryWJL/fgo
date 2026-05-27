@@ -73,7 +73,7 @@ python scripts/eval.py -t robosuite_lift -p fgo_dp3 -c <PATH_TO_CHECKPOINT>
 ### Hardware Requirements
 * **[UFACTORY xArm 7 Manipulator](https://www.ufactory.us/xarm)** (If you are using an xArm 5 or xArm 6, you must modify the task configuration files located in `fgo/config/task/`)
 * **[UFACTORY xArm Gripper](https://www.ufactory.us/product/ufactory-xarm-gripper)**
-* **[ZED 2 Stereo Camera](https://www.stereolabs.com/en-za/products/zed-2)** (Requires a USB-C cable and a stable camera stand)
+* **[StereoLabs ZED 2 Camera](https://www.stereolabs.com/en-za/products/zed-2)** (Requires a USB-C cable and a stable camera stand)
 * **[Meta Quest 3](https://www.meta.com/quest/quest-3)** (Used for teleoperation and human demonstration collection.)
 
 ### Software Requirements
@@ -81,3 +81,17 @@ python scripts/eval.py -t robosuite_lift -p fgo_dp3 -c <PATH_TO_CHECKPOINT>
 * **Python Environment:** Conda is highly recommended
 * **xArm SDK:** The official Python wrapper (`pip install xarm-python-sdk`) 
 * **[ZED SDK](https://www.stereolabs.com/developers/release):** You must install the system-level C++ SDK first, and then compile the `pyzed` Python wrapper using the provided `get_python_api.py` script
+
+## ❤️ Acknowledgement
+* Our DP3 implementation is adapted from [3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy).
+* Our DiT-Policy implementation is adapted from [Unified World Model](https://github.com/WEIRDLabUW/unified-world-model/tree/main).
+* Our FreqPolicy implementation is adapted from [FreqPolicy](https://github.com/4DVLab/Freqpolicy).
+
+## 💬 Citation
+```
+@article{wang2026fgo,
+  author={Wang, Junlin},
+  title={Frequency-Guided Action Diffusion via Sub-Frequency Manifold Traversal},
+  journal={arXiv preprint},
+  year={2026},
+```
