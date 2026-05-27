@@ -1,13 +1,14 @@
-# Frequency Guidance Operator (FGO)
+# <a href="https://henrywjl.github.io/frequency-guidance-operator/">Frequency Guidance Operator (FGO)</a>
 
-[[arXiv]]()
-[[Project Website]](https://henrywjl.github.io/frequency-guidance-operator/)
-[[Video]](https://drive.google.com/file/d/1mVgyPEJnNJF142NkGDUb2-FUOafl658y/view?usp=sharing)
-[[Data]](https://drive.google.com/drive/folders/17WUGhxG69ddA7HNqqN5lF0zIXbS6Eg3-?usp=drive_link)
+<a href="https://henrywjl.github.io/frequency-guidance-operator/"><strong>Project Website</strong></a>
+|
+<a href=""><strong>arXiv</strong></a>
+|
+<a href="https://drive.google.com/file/d/1mVgyPEJnNJF142NkGDUb2-FUOafl658y/view?usp=sharing"><strong>Video</strong></a>
+|
+<a href="https://drive.google.com/drive/folders/17WUGhxG69ddA7HNqqN5lF0zIXbS6Eg3-?usp=drive_link"><strong>Data</strong></a>
 
-[Junlin Wang](https://henrywjl.github.io/)<sup>1</sup>
-
-<sup>1</sup>University of Pennsylvania
+<a href="https://henrywjl.github.io/">Junlin Wang</a>
 
 <p align="center"><img src="media/teaser.gif" alt="drawing" width="80%"/></p>
 
