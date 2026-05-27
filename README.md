@@ -23,7 +23,7 @@ conda activate fgo_env
 ```bash
 pip install torch==2.4.0 torchvision==0.19.0 --index-url https://download.pytorch.org/whl/cu121
 ```
-**Note**: If you are using a different CUDA version or hardware setup, please find the appropriate installation command on the [official PyTorch website](https://pytorch.org/get-started/locally/).
+**Note:** If you are using a different CUDA version or hardware setup, please find the appropriate installation command on the [official PyTorch website](https://pytorch.org/get-started/locally/).
 
 #### 3. Install MuJoCo
 First, download and extract MuJoCo to your `~/.mujoco` directory:
@@ -44,40 +44,27 @@ source ~/.bashrc
 pip install -r requirements.txt
 ```
  
-## 💻 Training
-### Downloading a Dataset
-We provide a new dataset spanning 8 manipulation tasks across 3 different robots from the RLBench and Robosuite benchmarks. [Here](https://github.com/HenryWJL/icon/tree/main/icon/configs/task) is a complete list of tasks. To download our full dataset:
-```bash
-python scripts/download_dataset.py
-```
-If you'd like to download the data for a specific task (e.g., *Close Drawer*):
-```bash
-python scripts/download_dataset.py -t close_drawer
-```
-You can also download the dataset directly from the [Hugging Face](https://huggingface.co/datasets/HenryWJL/icon).
+## 💻 Reproducing Simulation Benchmark Results
+#### 1. Collect Expert Demonstrations
+We use expert policies to collect demonstrations from simulated environments. You may find the following repositories useful for generating your own datasets:
+- **[Sim Demo Collector](https://github.com/HenryWJL/sim_demo_collector)**: Our custom package for collecting data in the [Robosuite](https://github.com/ARISE-Initiative/robosuite) and [MimicGen](https://github.com/NVlabs/mimicgen) environments.
+- **[3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy)**: Provides tutorials for collecting data in the [Adroit](https://github.com/aravindr93/hand_dapg) and [DexArt](https://github.com/Kami-code/dexart-release) environments.
 
-### Running on a Device 
-Now it’s time to give it a try! You can run `scripts/train.py` to train any algorithm on any task you like.
-For example, to train a CNN-based diffusion policy coupled with ICon on the *Open Box* task:
+#### 2. Train Policies
+The training code is located in `scripts/train.py`. For example, to train the FGO policy on the Robosuite Lift task, run:
 ```bash
-python scripts/train.py task=open_box algo=icon_diffusion_unet
+python scripts/train.py --config-name=fgo_dp3.yaml \
+    task=robosuite_lift \
+    task.dataset.zarr_path=<PATH_TO_DATASET> \
+    training.device="cuda:0" \
+    training.seed=0 \
+    training.num_epochs=3000 \
+    dataloader.batch_size=512
 ```
-This will automatically create a subdirectory at `outputs/TASK_NAME/ALGO_NAME/YYYY-MM-DD/HH-MM-SS`, where configuration files, log files, and checkpoints will be saved. If you want to run on a different device with a different seed, simply append the desired arguments to the command:
-```bash
-python scripts/train.py task=open_box algo=icon_diffusion_unet train.device=cuda:0 train.seed=100
-```
-To enable Weights & Biases:
-```bash
-wandb login
-python scripts/train.py task=open_box algo=icon_diffusion_unet train.device=cuda:0 train.seed=100 train.wandb.enable=true
-```
+**Note:** This automatically creates a subdirectory under `data/outputs/` where configuration files, logs, and checkpoints are saved. To track your training runs with Weights & Biases, simply append training.use_wandb=true to the command.
 
-## ⏳ Evaluation
-Once you have obtained a well-trained policy, you can evaluate its performance in the simulated environments. For example, to evaluate a Transformer-based diffusion policy agumented with ICon on the *Close Microwave* task for 50 episodes: 
+#### 3. Evaluate Pretrained Policies
+Once you have a fully trained policy, you can evaluate its performance in the simulated environments using the evaluation script `scripts/eval.py`:
 ```bash
-python scripts/eval_sim_robot.py -t close_microwave -a icon_diffusion_transformer -c PATH_TO_YOUR_CHECKPOINT -ne 50
-```
-Recorded episode videos will be saved in `videos/TASK_NAME/ALGO_NAME`. For real-time visualization, set the rendering mode to "human":
-```bash
-python scripts/eval_sim_robot.py -t close_microwave -a icon_diffusion_transformer -c PATH_TO_YOUR_CHECKPOINT -ne 50 -rm human
+python scripts/eval.py -t robosuite_lift -p fgo_dp3 -c <PATH_TO_CHECKPOINT>
 ```
