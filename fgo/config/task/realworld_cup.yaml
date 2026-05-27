@@ -8,9 +8,6 @@ shape_meta: &shape_meta
     arm_qpos:
      shape: [7]
      type: low_dim
-    arm_qvel:
-     shape: [7]
-     type: low_dim
     ee_pos:
       shape: [3]
       type: low_dim
@@ -23,7 +20,7 @@ shape_meta: &shape_meta
   action:
     shape: [10]
 
-env_runner:  #TODO
+env_runner:
   _target_: fgo.env_runner.base_runner.BaseRunner
 
 dataset:
