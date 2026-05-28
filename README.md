@@ -91,7 +91,7 @@ python scripts/eval.py -t robosuite_lift -p fgo_dp3 -c <PATH_TO_CHECKPOINT>
 ```
 @article{wang2026fgo,
   author={Wang, Junlin},
-  title={Frequency-Guided Action Diffusion via Sub-Frequency Manifold Traversal},
-  journal={arXiv preprint},
+  title={Frequency-guided action diffusion via sub-frequency manifold traversal},
+  journal={arXiv preprint arXiv:2605.27919},
   year={2026},
 ```
