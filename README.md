@@ -2,7 +2,7 @@
 
 <a href="https://henrywjl.github.io/frequency-guidance-operator/"><strong>Project Website</strong></a>
 |
-<a href=""><strong>arXiv</strong></a>
+<a href="https://arxiv.org/abs/2605.27919"><strong>arXiv</strong></a>
 |
 <a href="https://drive.google.com/file/d/1mVgyPEJnNJF142NkGDUb2-FUOafl658y/view?usp=sharing"><strong>Video</strong></a>
 |
