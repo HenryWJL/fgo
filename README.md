@@ -4,7 +4,7 @@
 |
 <a href="https://arxiv.org/abs/2605.27919"><strong>arXiv</strong></a>
 |
-<a href="https://drive.google.com/file/d/1mVgyPEJnNJF142NkGDUb2-FUOafl658y/view?usp=sharing"><strong>Video</strong></a>
+<a href="https://drive.google.com/file/d/18gExZVB9Nutp7CqBHEXKap8da4Q64XK1/view?usp=sharing"><strong>Video</strong></a>
 |
 <a href="https://drive.google.com/drive/folders/17WUGhxG69ddA7HNqqN5lF0zIXbS6Eg3-?usp=drive_link"><strong>Data</strong></a>
 
