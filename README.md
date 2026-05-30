@@ -89,9 +89,10 @@ python scripts/eval.py -t robosuite_lift -p fgo_dp3 -c <PATH_TO_CHECKPOINT>
 
 ## 💬 Citation
 ```
-@article{wang2026fgo,
+@article{wang2026frequency,
+  title={Frequency-Guided Action Diffusion via Sub-Frequency Manifold Traversal},
   author={Wang, Junlin},
-  title={Frequency-guided action diffusion via sub-frequency manifold traversal},
   journal={arXiv preprint arXiv:2605.27919},
-  year={2026},
+  year={2026}
+}
 ```
